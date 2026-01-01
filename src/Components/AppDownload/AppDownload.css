@@ -1,0 +1,59 @@
+
+.app-download{
+	background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+	padding: 48px 20px;
+}
+.app-container{
+	max-width: 1100px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+}
+.download-text{
+	flex: 1 1 420px;
+}
+.download-text h3{
+	margin: 0 0 12px 0;
+	font-size: 24px;
+	color: #111827;
+}
+.download-text p{
+	margin: 0 0 18px 0;
+	color: #374151;
+	line-height: 1.5;
+}
+.store-badges{
+	display:flex;
+	gap:12px;
+	align-items:center;
+    justify-content: center;
+}
+.store-badges img{
+	height:44px;
+	width:auto;
+	display:block;
+	cursor:pointer;
+	transition: transform 140ms ease, box-shadow 140ms ease;
+}
+.store-badges img:hover{ transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+.download-preview{
+	flex: 0 0 280px;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+.download-preview img{
+	max-width: 100%;
+	height: auto;
+	border-radius: 12px;
+	box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+}
+
+@media (max-width: 800px){
+	.app-container{ flex-direction: column-reverse; text-align: center; }
+	.download-preview{ margin-bottom: 16px; }
+	.download-text h3{ font-size: 20px; }
+}
+

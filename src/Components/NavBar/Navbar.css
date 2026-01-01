@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+* {
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Superb modern navbar styles */
+.superb-navbar {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(255,138,0,0.08);
+  z-index: 100;
+  position: sticky;
+  top: 0;
+  border-radius: 0 0 24px 24px;
+}
+.superb-navbar .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  min-height: 80px;
+}
+.superb-navbar .logo {
+  height: 90px;
+  width: auto;
+  max-width: 300px;
+  margin-right: 16px;
+}
+.superb-navbar .navbar-menu {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.superb-navbar .navbar-menu li a,
+.superb-navbar .navbar-menu li .active {
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  transition: color 0.2s;
+}
+.superb-navbar .navbar-menu li .active,
+.superb-navbar .navbar-menu li a.active {
+  color: #ff8a00;
+}
+.superb-navbar .navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.superb-navbar .search-icon {
+  width: 28px;
+  height: 28px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+.superb-navbar .basket-icon-container {
+  position: relative;
+  cursor: pointer;
+}
+.superb-navbar .basket-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.superb-navbar .dot {
+  position: relative;
+  top: 992px;   /* 1000 - 8 */
+  right: 2px;
+  left: 12px;
+  width: 200px;
+  height: 220px;
+  background: #ff8a00;
+  border-radius: 50%;
+}
+.superb-navbar .signin-btn,
+.superb-navbar .signup-btn {
+  padding: 10px 32px;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(255,138,0,0.10);
+}
+.superb-navbar .signin-btn {
+  background: #ff8a00;
+  color: #fff;
+}
+.superb-navbar .signup-btn {
+  background: #fff;
+  color: #ff8a00;
+  border: 2px solid #ff8a00;
+}
+.superb-navbar .user-avatar-container {
+  position: relative;
+  margin-left: 16px;
+}
+.superb-navbar .user-avatar {
+  width: 40px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #eee;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255,138,0,0.10);
+}
+.superb-navbar .user-dropdown {
+  position: absolute;
+  right: 0;
+  top: 54px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  min-width: 200px;
+  z-index: 1000;
+  padding: 18px 24px;
+  text-align: center;
+}
+.superb-navbar .dropdown-item {
+  width: 100%;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+}
+.superb-navbar .dropdown-item:last-child {
+  color: #d00;
+}
+.superb-navbar .signin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.superb-navbar .signin-modal {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  padding: 40px 40px 32px 40px;
+  min-width: 360px;
+  min-height: 340px;
+  position: relative;
+}
+.superb-navbar .signin-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+/* User Dropdown Animation */
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-dropdown {
+  animation: dropdownFadeIn 0.2s ease-out;
+}
+
+/* User Avatar Hover Effects */
+.user-avatar {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 138, 0, 0.3);
+}
+
+

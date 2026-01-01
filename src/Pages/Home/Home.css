@@ -1,0 +1,65 @@
+/* Superb modern home styles */
+.superb-home {
+	width: 100%;
+	min-height: 100vh;
+	background: linear-gradient(120deg, #fff7f0 0%, #fff 100%);
+}
+.superb-home .hero-section {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 64px 0 48px 0;
+	max-width: 1200px;
+	margin: 0 auto;
+	gap: 48px;
+}
+.superb-home .hero-content {
+	flex: 1;
+	padding-left: 32px;
+}
+.superb-home .hero-content h1 {
+	font-size: 56px;
+	font-weight: 800;
+	color: #222;
+	margin-bottom: 18px;
+	line-height: 1.1;
+	letter-spacing: -2px;
+}
+.superb-home .hero-content p {
+	font-size: 22px;
+	color: #555;
+	margin-bottom: 36px;
+	max-width: 520px;
+	line-height: 1.5;
+}
+.superb-home .hero-buttons {
+	display: flex;
+	gap: 24px;
+}
+.superb-home .hero-login-btn,
+.superb-home .hero-signup-btn {
+	padding: 16px 48px;
+	border-radius: 32px;
+	font-size: 20px;
+	font-weight: 700;
+	border: none;
+	cursor: pointer;
+	transition: background 0.2s;
+	box-shadow: 0 4px 16px rgba(255,138,0,0.10);
+}
+.superb-home .hero-login-btn {
+	background: #ff8a00;
+	color: #fff;
+}
+.superb-home .hero-signup-btn {
+	background: #fff;
+	color: #ff8a00;
+	border: 2px solid #ff8a00;
+}
+.superb-home .hero-image {
+	width: 420px;
+	height: 420px;
+	object-fit: cover;
+	border-radius: 32px;
+	box-shadow: 0 8px 32px rgba(255,138,0,0.10);
+}

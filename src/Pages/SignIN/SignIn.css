@@ -1,0 +1,133 @@
+/* Full Page Background */
+.auth-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffb37a 0%, #ff6a00 100%);
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Card Container */
+.auth-card {
+  background: #fff;
+  width: 400px;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0px 10px 30px rgba(255, 102, 0, 0.3);
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Title */
+.auth-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ff6a00;
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+.auth-input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 2px solid #ffdac1;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #ff6a00;
+  box-shadow: 0 0 5px rgba(255, 106, 0, 0.4);
+}
+
+/* Button */
+.auth-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #ff8c32, #ff6a00);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 106, 0, 0.35);
+}
+
+.auth-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Switch Mode Text */
+.switch-text {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 14px;
+  color: #555;
+}
+
+.switch-text span {
+  color: #ff6a00;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.switch-text span:hover {
+  color: #e65a00;
+}
+
+/* Messages */
+.msg {
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  animation: slideDown 0.4s ease;
+}
+
+.msg.success {
+  background: #e6ffed;
+  color: #0a7a32;
+  border: 1px solid #9ee2b7;
+}
+
+.msg.error {
+  background: #ffe7e7;
+  color: #ba0000;
+  border: 1px solid #ffbcbc;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-card {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .auth-title {
+    font-size: 26px;
+  }
+}
