@@ -43,6 +43,7 @@ function SignIn({ onAuthSuccess, modeDefault = "Login" }) {
         if (mode === "Login" && result.data) {
           const token = result.data; // Token string from backend
           // Save token to localStorage
+          //hi
           localStorage.setItem('token', token);
           // Save user info to context
           loginUser({ 
