@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./SignIn.css";
 import { StoreContext } from "../../context/StoreContext";
-import "./chatAssistant.css";
 //added
 
 const BACKEND_URL = "https://protien-backend-1.onrender.com/api/users";
