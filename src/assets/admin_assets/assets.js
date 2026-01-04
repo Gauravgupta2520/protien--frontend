@@ -14,4 +14,4 @@ export const assets ={
     parcel_icon
 }
 
-export const url = import.meta.env.VITE_BACKEND_URL || 'https://protien-backend-1.onrender.com'
+export const url = 'https://protien-backend-1.onrender.com'

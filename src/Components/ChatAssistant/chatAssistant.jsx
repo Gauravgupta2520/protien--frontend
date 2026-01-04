@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import "./ChatAssistant.css";
+import "./chatAssistant.css";
 
 function ChatAssistant() {
   const [open, setOpen] = useState(false);
@@ -34,7 +34,7 @@ function ChatAssistant() {
     setLoading(true);
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL || "https://protien-backend-1.onrender.com"}/api/chat`, {
+      const res = await fetch("https://protien-backend-1.onrender.com/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
