@@ -117,6 +117,16 @@ const StoreContextProvider = (props) => {
     removePromoCode();
   };
 
+  const getTotalCartAmount = () => {
+    let totalAmount = 0;
+    food_list.forEach((item) => {
+      if (cartItems[item._id] > 0) {
+        totalAmount += item.price * cartItems[item._id];
+      }
+    });
+    return totalAmount;
+  };
+
   const contextValue = {
     food_list,
     cartItems,
@@ -127,6 +137,7 @@ const StoreContextProvider = (props) => {
     validatePromoCode,
     removePromoCode,
     clearCart,
+    getTotalCartAmount,
     promoCodes,
     user,
     loginUser,

@@ -1,0 +1,62 @@
+.placeorder {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.placeorder-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.placeorder-container h1 {
+  color: #ff8a00;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.order-summary {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.order-summary h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.order-summary p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff8a00;
+  margin: 10px 0;
+}
+
+.payment-btn {
+  width: 100%;
+  background: #ff8a00;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.payment-btn:hover:not(:disabled) {
+  background: #ff7a00;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 138, 0, 0.3);
+}
+
+.payment-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}

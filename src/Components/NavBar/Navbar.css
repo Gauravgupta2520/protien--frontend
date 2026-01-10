@@ -26,10 +26,12 @@
   min-height: 80px;
 }
 .superb-navbar .logo {
-  height: 90px;
-  width: auto;
-  max-width: 300px;
+  height: 100px;
+  width: 100px;
   margin-right: 16px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
 }
 .superb-navbar .navbar-menu {
   display: flex;
@@ -194,4 +196,227 @@
   box-shadow: 0 4px 12px rgba(255, 138, 0, 0.3);
 }
 
+/* Mobile Menu Button */
+.navbar-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #222;
+  padding: 8px;
+}
 
+/* Mobile Menu */
+.navbar-menu-mobile {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  z-index: 99;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.navbar-menu-mobile.active {
+  display: flex;
+}
+
+.navbar-menu-mobile li {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.navbar-menu-mobile li a {
+  display: block;
+  padding: 16px 24px;
+  color: #222;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.navbar-menu-mobile li a:active,
+.navbar-menu-mobile li a.active {
+  color: #ff8a00;
+  background: #fff8f0;
+}
+
+.navbar-menu-mobile li a:hover {
+  color: #ff8a00;
+}
+
+/* Explore Modal Mobile */
+.explore-modal {
+  max-height: 80vh;
+  max-width: 90vw;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .superb-navbar .container {
+    padding: 0 24px;
+    min-height: 70px;
+  }
+  
+  .superb-navbar .logo {
+    height: 140px;
+    width: 140px;
+    margin-right: 12px;
+  }
+  
+  .superb-navbar .navbar-menu {
+    gap: 24px;
+  }
+  
+  .superb-navbar .navbar-menu li a {
+    font-size: 16px;
+  }
+  
+  .superb-navbar .signin-btn,
+  .superb-navbar .signup-btn {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .superb-navbar .container {
+    padding: 0 16px;
+    min-height: 70px;
+  }
+  
+  .navbar-left {
+    gap: 16px !important;
+  }
+  
+  .superb-navbar .logo {
+    height: 100px;
+    width: 100px;
+    margin-right: 8px;
+  }
+  
+  /* Hide desktop menu, show mobile menu button */
+  .superb-navbar .navbar-menu {
+    display: none;
+  }
+  
+  .navbar-menu-toggle {
+    display: block;
+  }
+  
+  /* Hide login/signup buttons on tablet */
+  .superb-navbar .signin-btn,
+  .superb-navbar .signup-btn {
+    display: none;
+  }
+  
+  .navbar-right {
+    gap: 12px !important;
+  }
+  
+  .superb-navbar .search-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .superb-navbar .basket-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .user-avatar {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .superb-navbar .user-dropdown {
+    min-width: 180px;
+    padding: 12px 0;
+  }
+  
+  .superb-navbar .signin-modal {
+    min-width: 90%;
+    min-height: auto;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .superb-navbar {
+    border-radius: 0;
+  }
+  
+  .superb-navbar .container {
+    padding: 0 12px;
+    min-height: 65px;
+  }
+  
+  .superb-navbar .logo {
+    height: 80px;
+    width: 80px;
+    margin-right: 4px;
+  }
+  
+  .navbar-left {
+    flex: 1;
+    gap: 8px !important;
+  }
+  
+  .navbar-right {
+    gap: 8px !important;
+  }
+  
+  .superb-navbar .search-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .superb-navbar .basket-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .dot {
+    width: 6px;
+    height: 6px !important;
+    top: -6px !important;
+  }
+  
+  .user-avatar {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .superb-navbar .user-dropdown {
+    min-width: 150px;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+  
+  .superb-navbar .signin-modal {
+    min-width: 95%;
+    padding: 30px 20px 20px 20px;
+  }
+  
+  .superb-navbar .signin-modal-close {
+    font-size: 18px;
+  }
+  
+  .explore-modal {
+    min-width: 90vw;
+    min-height: auto;
+    padding: 30px 20px;
+  }
+  
+  .explore-modal h2 {
+    font-size: 20px;
+  }
+  
+  .explore-modal p {
+    font-size: 14px;
+  }
+}

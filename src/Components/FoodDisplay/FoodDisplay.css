@@ -5,7 +5,7 @@
 }
 
 .food-display h2 {
-  font-size: max(2.2vw, 28px);
+  font-size: clamp(1.5rem, 6vw, 2.8rem);
   margin-bottom: 32px;
   font-weight: 700;
   color: #262626;
@@ -18,3 +18,49 @@
   gap: 28px;
   padding-bottom: 40px;
 }
+
+@media (max-width: 1024px) {
+  .food-display-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .food-display {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .food-display {
+    margin: 30px 0;
+    padding: 0 16px;
+  }
+  
+  .food-display h2 {
+    margin-bottom: 24px;
+  }
+  
+  .food-display-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .food-display {
+    margin: 20px 0;
+    padding: 0 12px;
+  }
+  
+  .food-display h2 {
+    margin-bottom: 16px;
+  }
+  
+  .food-display-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-bottom: 20px;
+  }
+}
+

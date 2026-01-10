@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './FoodDisplay.css';
 import { StoreContext } from '../../context/StoreContext';
 import FoodItem from '../FoodItem/FoodItem.jsx';
 
-const FoodDisplay = ({ category = "All" }) => {
+const FoodDisplay = ({ category = 'All' }) => {
   const { food_list } = React.useContext(StoreContext);
+  const [selectedId, setSelectedId] = useState(null);
 
   // Filter food items based on category
-  const filteredFoodList = food_list.filter(item => 
-    category === "All" || item.category === category
+  const filteredFoodList = food_list.filter(item =>
+    category === 'All' || item.category === category
   );
+
+  // When category or food list changes, clear selection (no default selection)
+  useEffect(() => {
+    setSelectedId(null);
+  }, [category, food_list]);
 
   return (
     <div className="food-display" id="food-display">
@@ -24,6 +30,8 @@ const FoodDisplay = ({ category = "All" }) => {
               price={item.price}
               description={item.description}
               image={item.image}
+              selected={selectedId === item._id}
+              onSelect={() => setSelectedId(item._id)}
             />
           ))
         ) : (
