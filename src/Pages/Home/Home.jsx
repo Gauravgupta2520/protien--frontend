@@ -9,6 +9,8 @@ import './Home.css';
 const Home = () => {
   const { user } = useContext(StoreContext);
   const navigate = useNavigate();
+  const [category, setCategory] = React.useState('Salad');
+
   return (
     <div className="Home superb-home" style={{ background: 'linear-gradient(120deg, #fff7f0 0%, #fff 100%)', minHeight: '100vh', paddingBottom: 0 }}>
       <section className="hero-section" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '64px 0 48px 0', maxWidth: 1200, margin: '0 auto', gap: 48 }}>
@@ -27,8 +29,8 @@ const Home = () => {
         </div>
       </section>
       <section style={{ maxWidth: 1200, margin: '0 auto', padding: '0 0 32px 0' }}>
-        <ExploreMenu />
-        <FoodDisplay />
+        <ExploreMenu category={category} setCategory={setCategory} />
+        <FoodDisplay category={category} />
       </section>
     </div>
   );

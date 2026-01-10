@@ -12,13 +12,15 @@
 	max-width: 1200px;
 	margin: 0 auto;
 	gap: 48px;
+	padding-left: 32px;
+	padding-right: 32px;
 }
 .superb-home .hero-content {
 	flex: 1;
-	padding-left: 32px;
+	padding-left: 0;
 }
 .superb-home .hero-content h1 {
-	font-size: 56px;
+	font-size: clamp(2rem, 8vw, 56px);
 	font-weight: 800;
 	color: #222;
 	margin-bottom: 18px;
@@ -26,7 +28,7 @@
 	letter-spacing: -2px;
 }
 .superb-home .hero-content p {
-	font-size: 22px;
+	font-size: clamp(1.1rem, 4vw, 22px);
 	color: #555;
 	margin-bottom: 36px;
 	max-width: 520px;
@@ -35,12 +37,13 @@
 .superb-home .hero-buttons {
 	display: flex;
 	gap: 24px;
+	flex-wrap: wrap;
 }
 .superb-home .hero-login-btn,
 .superb-home .hero-signup-btn {
-	padding: 16px 48px;
+	padding: clamp(12px, 2.5vw, 16px) clamp(24px, 6vw, 48px);
 	border-radius: 32px;
-	font-size: 20px;
+	font-size: clamp(1rem, 3vw, 20px);
 	font-weight: 700;
 	border: none;
 	cursor: pointer;
@@ -62,4 +65,72 @@
 	object-fit: cover;
 	border-radius: 32px;
 	box-shadow: 0 8px 32px rgba(255,138,0,0.10);
+	flex-shrink: 0;
 }
+
+@media (max-width: 1024px) {
+	.superb-home .hero-section {
+		gap: 32px;
+		padding-left: 24px;
+		padding-right: 24px;
+	}
+	
+	.superb-home .hero-image {
+		width: 320px;
+		height: 320px;
+	}
+}
+
+@media (max-width: 768px) {
+	.superb-home .hero-section {
+		flex-direction: column-reverse;
+		padding: 40px 16px;
+		gap: 32px;
+	}
+	
+	.superb-home .hero-image {
+		width: 280px;
+		height: 280px;
+	}
+	
+	.superb-home .hero-buttons {
+		gap: 16px;
+	}
+}
+
+@media (max-width: 480px) {
+	.superb-home {
+		min-height: auto;
+	}
+	
+	.superb-home .hero-section {
+		padding: 30px 12px;
+		gap: 24px;
+	}
+	
+	.superb-home .hero-image {
+		width: 220px;
+		height: 220px;
+		border-radius: 20px;
+	}
+	
+	.superb-home .hero-content h1 {
+		margin-bottom: 12px;
+	}
+	
+	.superb-home .hero-content p {
+		margin-bottom: 24px;
+	}
+	
+	.superb-home .hero-buttons {
+		gap: 12px;
+		justify-content: center;
+	}
+	
+	.superb-home .hero-login-btn,
+	.superb-home .hero-signup-btn {
+		flex: 1;
+		min-width: 120px;
+	}
+}
+

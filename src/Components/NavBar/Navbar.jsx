@@ -7,11 +7,12 @@ import SignIn from '../../Pages/SignIN/SignIn';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { user, logoutUser } = useContext(StoreContext);
+  const { user, logoutUser, cartItems } = useContext(StoreContext);
   const [menu, setMenu] = useState('home');
   const [showSignIn, setShowSignIn] = useState(false); // 'login' | 'signup' | false
   const [dropdown, setDropdown] = useState(false);
   const [showExplore, setShowExplore] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const avatarUrl =
     assets.profile_icon || 'https://cdn.jsdelivr.net/gh/identicons/jasonlong/github-octocat@2x.png';
@@ -51,8 +52,9 @@ const Navbar = () => {
     // Clear user in context
     logoutUser();
     
-    // Close dropdown
+    // Close dropdown and mobile menu
     setDropdown(false);
+    setMobileMenuOpen(false);
     
     // Navigate to home
     navigate('/');
@@ -61,6 +63,12 @@ const Navbar = () => {
     setTimeout(() => {
       window.location.reload();
     }, 100);
+  };
+
+  // Handle menu item click on mobile
+  const handleMobileMenuItemClick = (menuName) => {
+    setMenu(menuName);
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -84,13 +92,9 @@ const Navbar = () => {
             src={assets.logo}
             alt="Rocket Meal Logo"
             className="logo"
-            style={{ 
-              height: 210, 
-              width: 'auto', 
-              maxWidth: 460, 
-              marginRight: 16, 
-              cursor: 'pointer', 
-              objectFit: 'contain',
+            style={{
+              marginRight: 16,
+              cursor: 'pointer',
               transition: 'transform 0.3s ease',
               display: 'block'
             }}
@@ -108,7 +112,7 @@ const Navbar = () => {
           />
           <ul
             className="navbar-menu"
-            style={{ display: 'flex', gap: 32, fontWeight: 500, fontSize: 18, margin: 0 }}
+            style={{ gap: 32, fontWeight: 500, fontSize: 18, margin: 0 }}
           >
             <li>
               <Link
@@ -141,7 +145,47 @@ const Navbar = () => {
               </a>
             </li>
           </ul>
+          
+          {/* Hamburger Menu Button */}
+          <button 
+            className="navbar-menu-toggle"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? '✕' : '☰'}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        <ul className={`navbar-menu-mobile ${mobileMenuOpen ? 'active' : ''}`}>
+          <li>
+            <Link
+              to="/"
+              className={menu === 'home' ? 'active' : ''}
+              onClick={() => handleMobileMenuItemClick('home')}
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <a
+              href="#explore-menu"
+              className={menu === 'Menu' ? 'active' : ''}
+              onClick={() => handleMobileMenuItemClick('Menu')}
+            >
+              Menu
+            </a>
+          </li>
+          <li>
+            <a
+              href="#footer"
+              className={menu === 'contact us' ? 'active' : ''}
+              onClick={() => handleMobileMenuItemClick('contact us')}
+            >
+              Contact Us
+            </a>
+          </li>
+        </ul>
 
         {/* Right Section */}
         <div className="navbar-right" style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
@@ -203,18 +247,20 @@ const Navbar = () => {
           {/* Basket */}
           <div className="basket-icon-container" onClick={() => navigate('/cart')} style={{ position: 'relative', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
             <img src={assets.basket_icon} alt="basket" className="basket-icon" style={{ width: 32, height: 32 }} />
-            <div className="dot" style={{ 
-              position: 'absolute', 
-              top: 'calc(4px - 0.1cm)', 
-              right: 4, 
-              width: 8, 
-              height: 8, 
-              background: '#ff4444', 
-              borderRadius: '50%',
-              border: '2px solid white',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-              zIndex: 10
-            }}></div>
+            {Object.keys(cartItems).length > 0 && (
+              <div className="dot" style={{ 
+                position: 'absolute', 
+                top: 'calc(4px - 0.1cm)', 
+                right: 4, 
+                width: 8, 
+                height: 8, 
+                background: '#ff4444', 
+                borderRadius: '50%',
+                border: '2px solid white',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+                zIndex: 10
+              }}></div>
+            )}
           </div>
 
           {/* Login / Sign Up Buttons - Show when NOT logged in */}
