@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import "./SignIn.css";
 import { StoreContext } from "../../context/StoreContext";
+import { setTokenCookie } from "../../utils/cookies";
 //added
 
 const BACKEND_URL = "https://protien-backend-1.onrender.com/api/users";
@@ -43,9 +44,8 @@ function SignIn({ onAuthSuccess, modeDefault = "Login" }) {
         // Handle login - token is in result.data
         if (mode === "Login" && result.data) {
           const token = result.data; // Token string from backend
-          // Save token to localStorage
-          //hi
-          localStorage.setItem('token', token);
+          // Save token to cookie
+          setTokenCookie(token);
           // Save user info to context
           loginUser({ 
             email: formData.email,

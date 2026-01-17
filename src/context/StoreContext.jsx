@@ -2,18 +2,28 @@
 import { createContext, useEffect } from "react";
 import { useState } from "react"; 
 
-import { food_list } from "../assets/frontend_assets/assets";   
+import { food_list } from "../assets/frontend_assets/assets";
+import { 
+  getUserCookie, 
+  setUserCookie, 
+  removeUserCookie,
+  getTokenCookie,
+  setTokenCookie,
+  removeTokenCookie,
+  getCartCookie,
+  setCartCookie
+} from "../utils/cookies";   
 
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  // Initialize cartItems from localStorage or empty object
+  // Initialize cartItems from cookies or empty object
   const [cartItems, setCartItems] = useState(() => {
     try {
-      const savedCart = localStorage.getItem('cartItems');
-      return savedCart ? JSON.parse(savedCart) : {};
+      const savedCart = getCartCookie();
+      return savedCart || {};
     } catch (error) {
-      console.error('Error loading cart from localStorage:', error);
+      console.error('Error loading cart from cookies:', error);
       return {};
     }
   });
@@ -24,15 +34,15 @@ const StoreContextProvider = (props) => {
   // User authentication state - only load if token exists
   const [user, setUser] = useState(() => {
     try {
-      const token = localStorage.getItem('token');
-      const savedUser = localStorage.getItem('user');
+      const token = getTokenCookie();
+      const savedUser = getUserCookie();
       // Only restore user if token exists (user is actually logged in)
       if (token && savedUser) {
-        return JSON.parse(savedUser);
+        return savedUser;
       }
       // Clear stale data if token doesn't exist
       if (savedUser && !token) {
-        localStorage.removeItem('user');
+        removeUserCookie();
       }
       return null;
     } catch (error) {
@@ -40,13 +50,13 @@ const StoreContextProvider = (props) => {
     }
   });
 
-  // Persist user to localStorage
+  // Persist user to cookies
   useEffect(() => {
     if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
+      setUserCookie(user);
     } else {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token'); // Also clear token when user is null
+      removeUserCookie();
+      removeTokenCookie(); // Also clear token when user is null
     }
   }, [user]);
 
@@ -56,8 +66,8 @@ const StoreContextProvider = (props) => {
   
   const logoutUser = () => {
     setUser(null);
-    localStorage.removeItem('token'); // Clear token on logout
-    localStorage.removeItem('user'); // Clear user data
+    removeTokenCookie(); // Clear token on logout
+    removeUserCookie(); // Clear user data
     clearCart();
   };
 
@@ -68,9 +78,9 @@ const StoreContextProvider = (props) => {
     "WELCOME": 15 // 15% off
   };
 
-  // Save cart to localStorage whenever it changes
+  // Save cart to cookies whenever it changes
   useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    setCartCookie(cartItems);
   }, [cartItems]);
 
   const addToCart = (itemId) => {

@@ -1,8 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { StoreContext } from '../../context/StoreContext';
-import './Navbar.css';
-import { assets } from '../../assets/frontend_assets/assets';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
+import { assets } from '../../assets/frontend_assets/assets'
+import { useContext } from 'react'
+import { StoreContext } from '../../context/StoreContext'
+import { getTokenCookie } from '../../utils/cookies'
 import SignIn from '../../Pages/SignIN/SignIn';
 
 const Navbar = () => {
@@ -19,7 +20,7 @@ const Navbar = () => {
 
   // Validate user state on mount - ensure token exists
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = getTokenCookie();
     // If no token but user exists in context, clear user (stale data)
     if (!token && user) {
       logoutUser();
@@ -27,7 +28,7 @@ const Navbar = () => {
   }, []);
 
   // Check if user is actually logged in (has token)
-  const isLoggedIn = user && localStorage.getItem('token');
+  const isLoggedIn = user && getTokenCookie();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -46,11 +47,7 @@ const Navbar = () => {
     e.stopPropagation();
     
     // Clear everything first
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    
-    // Clear user in context
-    logoutUser();
+    logoutUser(); // This will clear all cookies
     
     // Close dropdown and mobile menu
     setDropdown(false);

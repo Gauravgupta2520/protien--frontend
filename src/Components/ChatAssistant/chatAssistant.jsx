@@ -1,5 +1,7 @@
-import { useState, useRef, useEffect } from "react";
-import "./chatAssistant.css";
+import React, { useState, useContext, useRef, useEffect } from 'react'
+import './ChatAssistant.css'
+import { StoreContext } from '../../context/StoreContext'
+import { getTokenCookie } from '../../utils/cookies'
 
 function ChatAssistant() {
   const [open, setOpen] = useState(false);
@@ -18,11 +20,11 @@ function ChatAssistant() {
   const sendMessage = async () => {
     if (!input.trim()) return;
 
-    const token = localStorage.getItem("token");
+    const token = getTokenCookie();
     if (!token) {
       setMessages(prev => [
         ...prev,
-        { role: "assistant", content: "Error: Please login to use the chat assistant." }
+        { role: "assistant", content: "Error: Please login to use chat assistant." }
       ]);
       return;
     }
